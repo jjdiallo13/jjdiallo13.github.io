@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I LOVE YOU </title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+        body {
+            font-family: 'Pacifico', cursive;
+            background-color: #f0e6d2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            text-align: center;
+            background-color: #d1adb6;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        h1 {
+            color: #4a4a4a;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        #quote {
+            font-style: italic;
+            color: #6a6a6a;
+            margin: 1rem 0;
+            font-size: 1.2rem;
+        }
+        button {
+            background-color: #ff9999;
+            color: #b82763;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Pacifico', cursive;
+            font-size: 1rem;
+        }
+        button:hover {
+            background-color: #ff6666;
+            transform: scale(1.05);
+        }
+        .heart {
+            font-size: 2.5rem;
+            color: #ff6666;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .floating-heart {
+            position: absolute;
+            color: skyblue;
+            font-size: 1.5rem;
+            animation: float 15s linear infinite;
+            opacity: 0.7;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hi Purple</h1>
+        <div class="heart">❤️</div>
+        <p id="quote">i miss youuu click the button</p>
+        <button onclick="generateQuote()">you so cute,click me</button>
+    </div>
+
+    <script>
+        const quotes = [
+            "Your hands look better on my waist.",
+            "Hi pretty boy, I LOVE YOU.",
+            "I'm always trying to understand how you can be so adorable and hot at the same time.",
+            "I love you not because of who you are, but because of who I am when I am with you.",
+            "I shuffle the playlist you made me whenever I miss you. That's all the time btw.",
+            "I smile like an idiot when talking to you.",
+            "Currently learning how to teleport to you.",
+            "Hugging through the screen rn.",
+            "If I was a cat, I'd spend all of my nine lives with you.",
+            "You make my dopamine levels go silly."
+        ];
+
+        function generateQuote() {
+            const quoteElement = document.getElementById('quote');
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            quoteElement.textContent = quotes[randomIndex];
+        }
+
+        function createFloatingHearts() {
+            for (let i = 0; i < 50; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.classList.add('floating-heart');
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.animationDuration = `${15 + Math.random() * 10}s`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                document.body.appendChild(heart);
+            }
+        }
+
+        createFloatingHearts();
+    </script>
+</body>
+</html>
